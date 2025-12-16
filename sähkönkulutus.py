@@ -355,43 +355,5 @@ def main():
         if second_choice == 3:
             break
 
-
-
-
-
-
-"""
-    tieto_otsikko1 = ["Päivä", "Pvm",    "Kulutus", "[kWh]", "",  "Tuotanto", "[kWh]",  ""]
-    tieto_otsikko2 = ["",  "(pv.kk.vvvv)", "v1",    "v2",   "v3", "v1",      "v2",    "v3" ]
-    tietojen_otsikot = []
-    tietojen_otsikot.append(tieto_otsikko1)
-    tietojen_otsikot.append(tieto_otsikko2)
-
-    files_to_read = []
-
-    for name in os.listdir("."):
-        if name.endswith(".csv") and os.path.isfile(name):
-            files_to_read.append(name)
-    yhteenveto_file = "Yhteenveto.txt"
-    try:
-        with open(yhteenveto_file, "w", encoding="utf-8") as output_file:
-            for file in files_to_read:
-
-                sahkon_kulutustiedot = hae_sahkonkulutus(file)
-                viikko_numero = file.replace("viikko", "")
-                viikko_numero = viikko_numero.replace(".csv", "")
-                viikon_otsikko = ["Viikon ", viikko_numero, " sähkön tuotanto ja kulutus"]
-
-                tasoitetut_tiedot = []
-                tasoitetut_tiedot = tasoita_sarakkeet(tietojen_otsikot, sahkon_kulutustiedot)
-
-                luo_yhteenveto(output_file, tasoitetut_tiedot, viikon_otsikko)
-    except Exception as e:
-        print("Ongelma ilmeni tiedostoa luodessa:", e)
-    else:
-        print("Tiedosto luotu onnistuneesti:", os.path.abspath(yhteenveto_file))
-
-
-"""
 if __name__ == "__main__":
     main()

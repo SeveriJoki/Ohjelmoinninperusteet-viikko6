@@ -1,4 +1,4 @@
-Yhteenveto Huhtikuun sähkönkulutuksesta.
+Yhteenveto Kesäkuun sähkönkulutuksesta.
 Kulutus kWh   Tuotanto   Keskilämpötila   
 ------------------------------------------
-477,85        373,81     5,66             
+194,02        474,65     14,33            

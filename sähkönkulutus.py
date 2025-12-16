@@ -3,6 +3,7 @@
 
 from datetime import datetime
 import calendar
+import os
 
 VIIKONPAIVAT = {
     0:"Maanantai",
@@ -177,19 +178,23 @@ def tasoita_sarakkeet(*listat: list) -> list:
 
     return tasoitetut_listat
 
-def luo_yhteenveto(output_file:str, tiedot:list[str]):
+def luo_yhteenveto(file_name:str, tiedot:list[str]):
     """
     Docstring for luo_yhteenveto
     Luo tiedoston joka sisältää pääotsikon ja tulostaa tiedot otsikon alle riveittäin
     jokainen list[str] 'tiedot' parametrissä on yksi tulostettava rivi
     """
-    with open(output_file, "w", encoding="utf-8") as output_file:
+    try:
+        with open(file_name, "w", encoding="utf-8") as tiedosto:
 
-        for row in tiedot:
-            for index in row:
-                output_file.write(index)
-            output_file.write("\n")
-
+            for row in tiedot:
+                for index in row:
+                    tiedosto.write(index)
+                tiedosto.write("\n")
+    except Exception as e:
+        print("Jotain meni mönkään tiedostoa luodessa:",e)
+    else:
+        print("Tiedosto luotu onnistuneesti:", os.path.abspath(file_name))
 
     return
 
@@ -320,7 +325,7 @@ def loppu_valikko() -> int:
             print("1) Kirjoita raportti tiedostoon raportti.txt")
             print("2) Luo uusi raportti")
             print("3) Lopeta")
-            valikko_valinta = int(input("Numero:"))
+            valikko_valinta = int(input("Valitse valintasi (numero):"))
             if not 0 < valikko_valinta < 4:
                 print("Numeron täytyy olla 1-3")
                 continue
@@ -350,10 +355,12 @@ def main():
         second_choice = loppu_valikko()
         if second_choice == 1:
             luo_yhteenveto("Yhteenveto.txt",current_data)
+            print("")
         if second_choice == 2:
+            print("")
             continue
         if second_choice == 3:
             break
-
+        
 if __name__ == "__main__":
     main()

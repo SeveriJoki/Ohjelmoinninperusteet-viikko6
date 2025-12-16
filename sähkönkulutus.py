@@ -45,7 +45,7 @@ def muunna_sahkotiedot(sahkotunti: list) -> list:
     muutettu_sahkotunti.append(float(keskilampotila))
     return muutettu_sahkotunti
 
-def hae_sahkonkulutus2(start_date:datetime, end_date:datetime, file: str) -> list[str]:
+def hae_sahkonkulutus(start_date:datetime, end_date:datetime, file: str) -> list[str]:
     """
     Hankkii sähkönkulutuksen kahden aikavälin välistä.
     Palauttaa tiedon summattuna ja ottaa lämpötilan keskiarvon.
@@ -276,7 +276,7 @@ def hanki_data_alueelta(start_date:datetime, end_date:datetime, otsikko:str) -> 
     Tulostaa terminaaliin yhteenvedon tiedoista
     Palauttaa tiedot parametri otsikko lisättynä dataan
     """
-    data = hae_sahkonkulutus2(start_date,end_date,"2025.csv")
+    data = hae_sahkonkulutus(start_date,end_date,"2025.csv")
     headerit = ["Kulutus kWh", "Tuotanto", "Keskilämpötila"]
     tasoitetut_tiedot = tasoita_sarakkeet(headerit,data)
     print("")
